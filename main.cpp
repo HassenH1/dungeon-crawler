@@ -45,8 +45,9 @@ void find_player_g(char (&board)[R][C],char input){
 																}
 																// this doesnt work??!?!?
 																if(input == 'd'){
-																	board[row+1][col] = 'G';
-																	board[row][col] = '.';
+																	char temp = board[row][col];
+																	board[row][col] = board[row+1][col];
+																	board[row+1][col] = temp;
 																	break;
 																}
 																//else {
@@ -96,7 +97,6 @@ int main() {
 								draw_board(board);
 								std::cout << "make your move:(L/R/U/D) ";
 								std::cin >> input;
-								//check_key(board, input);
 				} while(input != 'e');
 
 				return 0;
