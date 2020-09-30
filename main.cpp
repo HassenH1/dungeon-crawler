@@ -1,20 +1,5 @@
 #include <iostream>
 
-// #define KEY_UP 72
-
-// #define KEY_DOWN 80
-
-// #define KEY_LEFT 75
-
-// #define KEY_RIGHT 77
-
-// if you don't want to display the character you press on the screen, use c = getch();.
-// else use c = getchar();
-
-// then simply compare c with those macros.
-// if(c == KEY_UP)
-// Do something
-
 const int R = 7; 
 const int C = 10;
 
@@ -36,18 +21,22 @@ void find_player_g(char (&board)[R][C],char input){
                 std::cout << "found the player on row: " << row << " and col: " 
                     << col << std::endl;
                 if(input == 'r'){
-                    board[row][col+1] = 'G';
-                    board[row][col] = '.';
-                    break;
+                    if(col+1 < 10){
+                        board[row][col+1] = 'G';
+                        board[row][col] = '.';
+                        break;
+                    } else {
+                        std::cout << "What are you doing trying to leave?!?" << std::endl;
+                    }
                 } 
                 if(input == 'l'){
-                    //if(board[row][col-1]){
+                    if(col-1 > -1){
                         board[row][col-1] = 'G';
                         board[row][col] = '.';
                         break;
-                    //} else {
-                    //    std::cout << "What are you doing trying to leave?!?" << std::endl;
-                    //}
+                    } else {
+                        std::cout << "What are you doing trying to leave?!?" << std::endl;
+                    }
                 }
                 if(input == 'd'){
                     r = row;
