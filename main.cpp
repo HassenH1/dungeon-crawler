@@ -13,10 +13,9 @@ void draw_board(char (&board)[R][C]){
 }
 
 // TODO: write enemies into the program
-//void enemies(char (&board)[R][C]){
 
-//}
 
+//Not working right now
 bool winner(char (&board)[R][C]){
     bool resp = false;
     std::cout << "Does this function ever hit" << std::endl;
@@ -46,7 +45,7 @@ void find_player_g(char (&board)[R][C],char input){
                         break;
                     } else {
                         std::cout << "What are you doing trying to leave?!?" 
-                        << std::endl;
+                            << std::endl;
                     }
                 } 
                 if(input == 'l'){
@@ -56,15 +55,21 @@ void find_player_g(char (&board)[R][C],char input){
                         break;
                     } else {
                         std::cout << "What are you doing trying to leave?!?" 
-                        << std::endl;
+                            << std::endl;
                     }
                 }
                 if(input == 'd'){
-                    r = row;
-                    c = col;
-                    board[row][col] = '.';
-                    break;
-                }
+                    if(row+1 < 7){
+                        r = row;
+                        c = col;
+                        board[row][col] = '.';
+                        break;
+                    } else {
+                        std::cout << "What are you doing trying to leave?!?" 
+                            << std::endl;
+                        break;
+                    } 
+                                    }
                 if(input == 'u'){
                     r = row;
                     c = col;
@@ -98,7 +103,7 @@ void update_board(char input, char (&board)[R][C]){
             break;
         default: 
             std::cout << "must pick from the letters L/R/U/D or press e to exit" 
-            << std::endl;
+                << std::endl;
             break;
     }
 }
@@ -123,7 +128,7 @@ int main() {
         std::cin >> input;
         win = winner(board);
         if(win){
-          break;
+            break;
         }
     } while(input != 'e');
 
