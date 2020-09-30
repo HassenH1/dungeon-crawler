@@ -28,34 +28,47 @@ void draw_board(char (&board)[R][C]){
 }
 
 void find_player_g(char (&board)[R][C],char input){
-    std::cout << "inside find_player_g function" << std::endl;
+    int r{};
+    int c{};
     for(auto row = 0; row < 7; row++){
         for(auto col = 0; col < 10; col++){
             if(board[row][col] == 'G'){
-                std::cout << "found the player on row: " << row << " and col: " << col << std::endl;
+                std::cout << "found the player on row: " << row << " and col: " 
+                    << col << std::endl;
                 if(input == 'r'){
                     board[row][col+1] = 'G';
                     board[row][col] = '.';
                     break;
                 } 
                 if(input == 'l'){
-                    board[row][col-1] = 'G';
+                    //if(board[row][col-1]){
+                        board[row][col-1] = 'G';
+                        board[row][col] = '.';
+                        break;
+                    //} else {
+                    //    std::cout << "What are you doing trying to leave?!?" << std::endl;
+                    //}
+                }
+                if(input == 'd'){
+                    r = row;
+                    c = col;
                     board[row][col] = '.';
                     break;
                 }
-                // this doesnt work??!?!?
-                if(input == 'd'){
-                    char temp = board[row][col];
-                    board[row][col] = board[row+1][col];
-                    board[row+1][col] = temp;
+                if(input == 'u'){
+                    r = row;
+                    c = col;
+                    board[row][col] = '.';
                     break;
                 }
-                //else {
-                //  std::cout << "There was no input or wrong input" << std::endl;
-                //  break;
-                //}
             } 
         }
+    }
+    if(input == 'd'){
+        board[r+1][c] = 'G';
+    }
+    if(input == 'u'){
+        board[r-1][c] = 'G';
     }
 }
 
