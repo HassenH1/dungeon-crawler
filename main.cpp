@@ -18,7 +18,6 @@
 const int R = 7; 
 const int C = 10;
 
-
 void draw_board(char (&board)[R][C]){
 				for(auto row = 0; row < 7; row++){
 								for(auto col = 0; col < 10; col++){
@@ -45,11 +44,11 @@ void find_player_g(char (&board)[R][C],char input){
 																				break;
 																}
 																// this doesnt work??!?!?
-																/*if(input == 'd'){
+																if(input == 'd'){
 																	board[row+1][col] = 'G';
 																	board[row][col] = '.';
 																	break;
-																	}*/
+																}
 																//else {
 																//  std::cout << "There was no input or wrong input" << std::endl;
 																//  break;
