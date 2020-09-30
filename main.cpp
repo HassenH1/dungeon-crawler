@@ -59,7 +59,7 @@ void find_player_g(char (&board)[R][C],char input){
                     }
                 }
                 if(input == 'd'){
-                    if(row+1 < 7){
+                    if(row+1 <= 6){
                         r = row;
                         c = col;
                         board[row][col] = '.';
@@ -67,7 +67,7 @@ void find_player_g(char (&board)[R][C],char input){
                     }
                 }
                 if(input == 'u'){
-                    if(row-1 > 0){
+                    if(row-1 >= 0){
                         r = row;
                         c = col;
                         board[row][col] = '.';
@@ -78,14 +78,15 @@ void find_player_g(char (&board)[R][C],char input){
         }
     }
     if(input == 'd'){
-        if(r+1 < 7){
+        if(r+1 <= 6){
+            std::cout << "hitting this again??" << std::endl;
             board[r+1][c] = 'G';
         } else {
             std::cout << "Where you trying to go?!?" << std::endl;
         }
     }
     if(input == 'u'){
-        if(r-1 > 0){
+        if(r-1 >= 0){
             board[r-1][c] = 'G';
         } else { 
             std::cout << "Where you trying to go?!?" << std::endl;
