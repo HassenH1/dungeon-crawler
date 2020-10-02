@@ -16,7 +16,6 @@ void draw_board(char (&board)[R][C]){
 // TODO: write enemies into the program
 
 
-//Not working right now
 bool winner(char (&board)[R][C], bool &win){
     for(int row = 0; row < 7; row++){
         for(int col = 0; col < 10; col++){
