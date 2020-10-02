@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 
 const int R = 7; 
 const int C = 10;
@@ -14,7 +16,13 @@ void draw_board(char (&board)[R][C]){
 }
 
 // TODO: write enemies into the program
-
+void enemy(char (&board)[R][C]){
+    srand(time(NULL));
+    int r = rand() % 7;
+    int c = rand() % 10;
+    std::cout << r << " <-----> " << c << std::endl;
+    board[r][c] == 'T';
+}
 
 bool winner(char (&board)[R][C], bool &win){
     for(int row = 0; row < 7; row++){
@@ -123,6 +131,7 @@ int main() {
 
     char input{};
     bool win = false;
+    enemy(board);
     do{
         update_board(input, board);
         win = winner(board, win);
