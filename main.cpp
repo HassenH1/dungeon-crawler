@@ -17,17 +17,15 @@ void draw_board(char (&board)[R][C]){
 
 
 //Not working right now
-bool winner(char (&board)[R][C]){
-    bool resp = false;
-    std::cout << "Does this function ever hit" << std::endl;
-    for(int i = 0; i < 7; i++){
-        for(int j = 0; j < 10; j++){
-            if(board[i][j] == 'X' && board[i][j] == 'G'){
-                std::cout << "Winner!" << std::endl;
+bool winner(char (&board)[R][C], bool &win){
+    for(int row = 0; row < 7; row++){
+        for(int col = 0; col < 10; col++){
+            if(board[row][col] == 'G' && row == 6 && col == 9){
+                win = true;
             }
         }
     }
-    return resp;
+    return win;
 }
 
 void find_player_g(char (&board)[R][C],char input){
@@ -36,8 +34,6 @@ void find_player_g(char (&board)[R][C],char input){
     for(auto row = 0; row < 7; row++){
         for(auto col = 0; col < 10; col++){
             if(board[row][col] == 'G'){
-                std::cout << "found the player on row: " << row << " and col: " 
-                    << col << std::endl;
                 if(input == 'r'){
                     if(col+1 < 10){
                         board[row][col+1] = 'G';
@@ -130,13 +126,16 @@ int main() {
     bool win = false;
     do{
         update_board(input, board);
+        win = winner(board, win);
+
         draw_board(board);
-        std::cout << "make your move or press e to Exit:(L/R/U/D) ";
-        std::cin >> input;
-        win = winner(board);
         if(win){
+            std::cout << "WINNER!!" << std::endl;
             break;
         }
+
+        std::cout << "make your move or press e to Exit:(L/R/U/D) ";
+        std::cin >> input;
     } while(input != 'e');
 
     return 0;
