@@ -15,14 +15,12 @@ void draw_board(char (&board)[R][C]){
     }
 }
 
-// TODO: write enemies into the program
-// not working currently
 void enemy(char (&board)[R][C]){
     srand(time(NULL));
     int r = rand() % 7;
     int c = rand() % 10;
     std::cout << r << " <-----> " << c << std::endl;
-    board[r][c] == 'T';
+    board[r][c] = 'T';
 }
 
 bool winner(char (&board)[R][C], bool &win){
@@ -132,9 +130,11 @@ int main() {
 
     char input{};
     bool win = false;
-    enemy(board);
+
     do{
         update_board(input, board);
+
+        enemy(board);
         win = winner(board, win);
         draw_board(board);
         if(win){
